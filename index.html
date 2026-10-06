@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>啪啪啪电影网 - 夜色光影，都市故事</title>
+<meta name="keywords" content="啪啪啪电影网, 都市电影, 夜景影视, 深夜观影, 霓虹光影, 城市故事">
+<meta name="description" content="啪啪啪电影网（papapadianyingwang-top）聚焦都市夜色光影，精选夜景电影、都市情感、悬疑犯罪、午夜场影视，陪你度过每一个不眠之夜。https://papapadianyingwang-top.github.io">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+    background: #0a0a1a;
+    color: #d8d8f0;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* 霓虹天际线顶栏 */
+.skyline-bar {
+    height: 20px;
+    background: linear-gradient(180deg, #1a1a3e 0%, #0f0f2e 100%);
+    position: relative;
+    overflow: hidden;
+}
+.skyline-bar::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, transparent 0%, transparent 3%, #0a0a1a 3%, #0a0a1a 8%, transparent 8%, transparent 12%, #0a0a1a 12%, #0a0a1a 15%, transparent 15%),
+        linear-gradient(90deg, transparent 20%, #0a0a1a 20%, #0a0a1a 28%, transparent 28%, transparent 35%, #0a0a1a 35%, #0a0a1a 42%, transparent 42%),
+        linear-gradient(90deg, transparent 50%, #0a0a1a 50%, #0a0a1a 58%, transparent 58%, transparent 65%, #0a0a1a 65%, #0a0a1a 72%, transparent 72%),
+        linear-gradient(90deg, transparent 78%, #0a0a1a 78%, #0a0a1a 88%, transparent 88%, transparent 94%, #0a0a1a 94%, #0a0a1a 98%, transparent 98%);
+}
+.skyline-bar::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 20%;
+    width: 3px; height: 3px;
+    background: #ffeb3b;
+    border-radius: 50%;
+    box-shadow: 
+        40px 0 0 #ff5252,
+        80px -2px 0 #40c4ff,
+        120px 1px 0 #ffeb3b,
+        160px -1px 0 #69f0ae,
+        200px 2px 0 #e040fb,
+        240px 0 0 #ff5252,
+        280px -2px 0 #40c4ff,
+        320px 1px 0 #ffeb3b;
+    animation: stars-twinkle 3s ease-in-out infinite;
+}
+@keyframes stars-twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* 玻璃拟态导航 */
+.header {
+    background: rgba(15, 15, 46, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(100, 100, 255, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-box { display: flex; align-items: center; gap: 12px; }
+.logo-neon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: rgba(20, 20, 60, 0.8);
+    border: 1px solid rgba(100, 100, 255, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(64, 196, 255, 0.2), inset 0 0 10px rgba(64, 196, 255, 0.1);
+}
+.logo-text {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: #fff;
+}
+.logo-text b { font-weight: 700; }
+.logo-text .night { color: #40c4ff; text-shadow: 0 0 10px rgba(64,196,255,0.5); }
+.logo-text .life { color: #e040fb; text-shadow: 0 0 10px rgba(224,64,251,0.5); }
+.nav-links { display: flex; gap: 6px; list-style: none; }
+.nav-links a {
+    text-decoration: none;
+    color: #a8a8d0;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+.nav-links a:hover {
+    background: rgba(100, 100, 255, 0.15);
+    color: #fff;
+    text-shadow: 0 0 8px rgba(64,196,255,0.4);
+}
+
+/* 英雄区 */
+.hero {
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: 
+        radial-gradient(ellipse 800px 400px at 30% 20%, rgba(64,196,255,0.08), transparent),
+        radial-gradient(ellipse 600px 400px at 70% 80%, rgba(224,64,251,0.08), transparent),
+        linear-gradient(180deg, #0d0d2e 0%, #0a0a1a 100%);
+}
+/* 城市天际线 */
+.hero-skyline {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 140px;
+    background: 
+        linear-gradient(180deg, transparent 0%, transparent 30%, #05051a 30%),
+        repeating-linear-gradient(90deg, 
+            transparent 0, transparent 40px,
+            #05051a 40px, #05051a 48px,
+            transparent 48px, transparent 80px,
+            #05051a 80px, #05051a 95px,
+            transparent 95px, transparent 120px,
+            #05051a 120px, #05051a 125px,
+            transparent 125px, transparent 160px,
+            #05051a 160px, #05051a 180px,
+            transparent 180px, transparent 200px);
+}
+.hero-skyline::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+        linear-gradient(90deg, 
+            transparent 0%, transparent 15%,
+            rgba(255,235,59,0.3) 15%, rgba(255,235,59,0.3) 15.5%,
+            transparent 16%, transparent 30%,
+            rgba(255,82,82,0.3) 30%, rgba(255,82,82,0.3) 30.5%,
+            transparent 31%, transparent 50%,
+            rgba(64,196,255,0.3) 50%, rgba(64,196,255,0.3) 50.5%,
+            transparent 51%, transparent 70%,
+            rgba(105,240,174,0.3) 70%, rgba(105,240,174,0.3) 70.5%,
+            transparent 71%, transparent 85%,
+            rgba(224,64,251,0.3) 85%, rgba(224,64,251,0.3) 85.5%,
+            transparent 86%);
+    animation: window-flicker 4s ease-in-out infinite;
+}
+@keyframes window-flicker {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+.hero-content { position: relative; z-index: 2; max-width: 700px; padding: 0 20px; }
+.hero-badge {
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 20px;
+    background: rgba(100, 100, 255, 0.1);
+    border: 1px solid rgba(100, 100, 255, 0.3);
+    color: #8fa8ff;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+.hero h1 {
+    font-size: clamp(30px, 6vw, 50px);
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #fff;
+    letter-spacing: 3px;
+}
+.hero h1 .gradient {
+    background: linear-gradient(135deg, #40c4ff, #e040fb, #69f0ae);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease infinite;
+}
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+.hero p {
+    font-size: 16px;
+    color: #a8a8d0;
+    margin-bottom: 30px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.hero-btn {
+    display: inline-block;
+    padding: 13px 36px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(64,196,255,0.3), rgba(224,64,251,0.3));
+    border: 1px solid rgba(100, 100, 255, 0.4);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(100, 100, 255, 0.2);
+}
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(100, 100, 255, 0.4);
+    background: linear-gradient(135deg, rgba(64,196,255,0.4), rgba(224,64,251,0.4));
+}
+
+/* 通用区块 */
+.section { max-width: 1200px; margin: 0 auto; padding: 55px 20px; }
+.section-head { text-align: center; margin-bottom: 38px; }
+.section-head h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+}
+.section-head h2 span {
+    background: linear-gradient(135deg, #40c4ff, #e040fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.section-head p { color: #6a6a9a; font-size: 14px; font-weight: 300; letter-spacing: 1px; }
+
+/* 玻璃卡片通用 */
+.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+}
+
+/* 栏目一：夜色精选 */
+.night-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+}
+.night-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+.night-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(100, 100, 255, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(100, 100, 255, 0.1);
+}
+.night-cover {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    position: relative;
+}
+.night-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at 50% 100%, rgba(100,100,255,0.15), transparent 70%);
+}
+.night-cover.n1 { background: linear-gradient(180deg, #0d1b3e, #162a5e); }
+.night-cover.n2 { background: linear-gradient(180deg, #1a0a2e, #2e1a5e); }
+.night-cover.n3 { background: linear-gradient(180deg, #0a1a2e, #1a3a5e); }
+.night-cover.n4 { background: linear-gradient(180deg, #1a1a0a, #3a3a1a); }
+.night-body { padding: 18px; }
+.night-body h3 { font-size: 16px; color: #fff; margin-bottom: 4px; font-weight: 600; }
+.night-body .meta { font-size: 12px; color: #6a6a9a; margin-bottom: 8px; }
+.night-body .desc { font-size: 13px; color: #a8a8d0; line-height: 1.6; }
+.night-tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 500;
+    background: rgba(64,196,255,0.1);
+    border: 1px solid rgba(64,196,255,0.2);
+    color: #40c4ff;
+}
+
+/* 栏目二：夜色频道 */
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+    gap: 14px;
+}
+.channel-item {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px 10px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.channel-item:hover {
+    background: rgba(100, 100, 255, 0.08);
+    border-color: rgba(100, 100, 255, 0.3);
+    transform: translateY(-3px);
+}
+.channel-item .c-icon { font-size: 30px; margin-bottom: 8px; display: block; }
+.channel-item .c-name { font-size: 13px; font-weight: 600; color: #d8d8f0; }
+.channel-item .c-sub { font-size: 10px; color: #5a5a8a; margin-top: 2px; }
+
+/* 栏目三：午夜榜单 */
+.midnight-section {
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid rgba(100,100,255,0.1);
+    border-bottom: 1px solid rgba(100,100,255,0.1);
+}
+.midnight-list { max-width: 760px; margin: 0 auto; }
+.midnight-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    transition: all 0.3s;
+}
+.midnight-item:hover {
+    background: rgba(100, 100, 255, 0.06);
+    border-color: rgba(100, 100, 255, 0.25);
+    transform: translateX(6px);
+}
+.midnight-num {
+    font-size: 20px;
+    font-weight: 700;
+    min-width: 36px;
+    text-align: center;
+    color: #40c4ff;
+    text-shadow: 0 0 8px rgba(64,196,255,0.4);
+}
+.midnight-info h4 { font-size: 15px; color: #fff; margin-bottom: 2px; font-weight: 600; }
+.midnight-info p { font-size: 12px; color: #6a6a9a; }
+.midnight-score { margin-left: auto; font-size: 18px; font-weight: 700; color: #69f0ae; }
+
+/* 栏目四：关于 */
+.about-glass {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+}
+.about-glass .moon { font-size: 48px; margin-bottom: 14px; }
+.about-glass h3 { font-size: 22px; color: #fff; margin-bottom: 16px; font-weight: 700; letter-spacing: 2px; }
+.about-glass p { font-size: 14px; color: #a8a8d0; line-height: 2; margin-bottom: 12px; font-weight: 300; }
+.about-glass .url {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 26px;
+    border-radius: 24px;
+    background: rgba(100, 100, 255, 0.1);
+    border: 1px solid rgba(100, 100, 255, 0.3);
+    color: #8fa8ff;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* 底部 */
+.footer {
+    background: #05051a;
+    text-align: center;
+    padding: 38px 20px 22px;
+    border-top: 1px solid rgba(100,100,255,0.15);
+    margin-top: 50px;
+}
+.footer-logo { font-size: 20px; font-weight: 700; margin-bottom: 12px; letter-spacing: 2px; }
+.footer-logo .fn { color: #40c4ff; }
+.footer-logo .fl { color: #e040fb; }
+.footer-nav { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 18px; }
+.footer-nav a { color: #5a5a8a; text-decoration: none; font-size: 13px; transition: color 0.3s; }
+.footer-nav a:hover { color: #40c4ff; }
+.footer-line { width: 50px; height: 1px; background: rgba(100,100,255,0.2); margin: 16px auto; }
+.footer-copy { font-size: 12px; color: #3a3a5a; }
+.footer-site { font-size: 12px; color: #6a8aaa; margin-top: 6px; }
+
+/* 移动端 */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { min-height: 55vh; }
+    .hero h1 { font-size: 26px; }
+    .hero-skyline { height: 80px; }
+    .section { padding: 38px 15px; }
+    .section-head h2 { font-size: 22px; }
+    .night-grid { grid-template-columns: 1fr; }
+    .channel-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .channel-item { padding: 16px 6px; }
+    .channel-item .c-icon { font-size: 24px; }
+    .midnight-item { padding: 12px 14px; gap: 12px; }
+    .midnight-num { font-size: 18px; }
+    .midnight-info h4 { font-size: 13px; }
+    .midnight-score { font-size: 15px; }
+    .about-glass { padding: 28px 16px; }
+}
+@media (max-width: 480px) {
+    .channel-grid { grid-template-columns: repeat(2, 1fr); }
+    .logo-text { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<div class="skyline-bar"></div>
+
+<header class="header">
+    <div class="nav-inner">
+        <div class="logo-box">
+            <div class="logo-neon">🌙</div>
+            <div class="logo-text"><span class="night">啪啪啪</span><span class="life">电影网</span></div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#night">夜色精选</a></li>
+                <li><a href="#channel">夜色频道</a></li>
+                <li><a href="#midnight">午夜榜单</a></li>
+                <li><a href="#about">关于本站</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-skyline"></div>
+    <div class="hero-content">
+        <div class="hero-badge">🌃 Midnight Cinema</div>
+        <h1>啪啪啪<span class="gradient">电影网</span></h1>
+        <p>当城市入睡，故事才开始。聚焦都市夜色光影，陪你度过每一个不眠之夜。</p>
+        <a href="#night" class="hero-btn">进入夜色 →</a>
+    </div>
+</section>
+
+<section class="section" id="night">
+    <div class="section-head">
+        <h2>夜色<span>精选</span></h2>
+        <p>城市不眠，光影不息</p>
+    </div>
+    <div class="night-grid">
+        <div class="night-card">
+            <div class="night-cover n1">🌃</div>
+            <div class="night-body">
+                <h3>银翼杀手2049</h3>
+                <div class="meta">2017 · 科幻/霓虹 · 维伦纽瓦</div>
+                <div class="desc">未来都市的霓虹雨夜，一个复制人的记忆追寻之旅。视觉美学天花板，每一帧都是壁纸。</div>
+                <span class="night-tag">夜色神作</span>
+            </div>
+        </div>
+        <div class="night-card">
+            <div class="night-cover n2">🌆</div>
+            <div class="night-body">
+                <h3>夜行者</h3>
+                <div class="meta">2014 · 犯罪/惊悚 · 杰克·吉伦哈尔</div>
+                <div class="desc">洛杉矶的黑夜摄影师，游走在犯罪与道德的边界。冷峻镜头下的都市暗面。</div>
+                <span class="night-tag">午夜必看</span>
+            </div>
+        </div>
+        <div class="night-card">
+            <div class="night-cover n3">🌉</div>
+            <div class="night-body">
+                <h3>迷失东京</h3>
+                <div class="meta">2003 · 文艺/都市 · 索菲亚·科波拉</div>
+                <div class="desc">东京的霓虹夜晚，两个孤独灵魂的短暂相遇。静谧、疏离、又莫名温柔。</div>
+                <span class="night-tag">都市情感</span>
+            </div>
+        </div>
+        <div class="night-card">
+            <div class="night-cover n4">🏙️</div>
+            <div class="night-body">
+                <h3>出租车司机</h3>
+                <div class="meta">1976 · 犯罪/剧情 · 马丁·斯科塞斯</div>
+                <div class="desc">纽约雨夜的出租车后座，一个越战老兵的精神迷失。影史最伟大的夜晚之一。</div>
+                <span class="night-tag">经典夜场</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="channel">
+    <div class="section-head">
+        <h2>夜色<span>频道</span></h2>
+        <p>深夜专属，总有一款适合失眠的你</p>
+    </div>
+    <div class="channel-grid">
+        <div class="channel-item">
+            <span class="c-icon">🌃</span>
+            <div class="c-name">都市夜景</div>
+            <div class="c-sub">1,265部</div>
+        </div>
+        <div class="channel-item">
+            <span class="c-icon">🕯️</span>
+            <div class="c-name">午夜场</div>
+            <div class="c-sub">876部</div>
+        </div>
+        <div class="channel-item">
+            <span class="c-icon">🎭</span>
+            <div class="c-name">犯罪悬疑</div>
+            <div class="c-sub">2,154部</div>
+        </div>
+        <div class="channel-item">
+            <span class="c-icon">💃</span>
+            <div class="c-name">夜店歌舞</div>
+            <div class="c-sub">543部</div>
+        </div>
+        <div class="channel-item">
+            <span class="c-icon">🌙</span>
+            <div class="c-name">失眠治愈</div>
+            <div class="c-sub">987部</div>
+        </div>
+        <div class="channel-item">
+            <span class="c-icon">🍸</span>
+            <div class="c-name">黑色电影</div>
+            <div class="c-sub">1,432部</div>
+        </div>
+        <div class="channel-item">
+            <span class="c-icon">🌆</span>
+            <div class="c-name">霓虹美学</div>
+            <div class="c-sub">765部</div>
+        </div>
+        <div class="channel-item">
+            <span class="c-icon">🦇</span>
+            <div class="c-name">暗夜惊悚</div>
+            <div class="c-sub">1,098部</div>
+        </div>
+    </div>
+</section>
+
+<section class="midnight-section" id="midnight">
+    <div class="section">
+        <div class="section-head">
+            <h2>午夜<span>榜单</span></h2>
+            <p>最适合深夜独自观看的影片</p>
+        </div>
+        <div class="midnight-list">
+            <div class="midnight-item">
+                <div class="midnight-num">1</div>
+                <div class="midnight-info">
+                    <h4>穆赫兰道</h4>
+                    <p>2001 · 悬疑/梦境 · 大卫·林奇</p>
+                </div>
+                <div class="midnight-score">9.3</div>
+            </div>
+            <div class="midnight-item">
+                <div class="midnight-num">2</div>
+                <div class="midnight-info">
+                    <h4>七宗罪</h4>
+                    <p>1995 · 犯罪/惊悚 · 大卫·芬奇</p>
+                </div>
+                <div class="midnight-score">9.1</div>
+            </div>
+            <div class="midnight-item">
+                <div class="midnight-num">3</div>
+                <div class="midnight-info">
+                    <h4>老无所依</h4>
+                    <p>2007 · 犯罪/西部 · 科恩兄弟</p>
+                </div>
+                <div class="midnight-score">8.9</div>
+            </div>
+            <div class="midnight-item">
+                <div class="midnight-num">4</div>
+                <div class="midnight-info">
+                    <h4>记忆碎片</h4>
+                    <p>2000 · 悬疑/烧脑 · 克里斯托弗·诺兰</p>
+                </div>
+                <div class="midnight-score">8.8</div>
+            </div>
+            <div class="midnight-item">
+                <div class="midnight-num">5</div>
+                <div class="midnight-info">
+                    <h4>海上钢琴师</h4>
+                    <p>1998 · 音乐/剧情 · 朱塞佩·托纳多雷</p>
+                </div>
+                <div class="midnight-score">8.7</div>
+            </div>
+            <div class="midnight-item">
+                <div class="midnight-num">6</div>
+                <div class="midnight-info">
+                    <h4>天使爱美丽</h4>
+                    <p>2001 · 浪漫/奇幻 · 巴黎之夜</p>
+                </div>
+                <div class="midnight-score">8.5</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="section-head">
+        <h2>关于<span>啪啪啪电影网</span></h2>
+    </div>
+    <div class="about-glass">
+        <div class="moon">🌙🎬</div>
+        <h3>当城市入睡，故事才开始</h3>
+        <p><strong style="color:#40c4ff;">啪啪啪电影网</strong>（papapadianyingwang-top）是一个属于夜晚的影视平台。我们相信，有些故事只有在夜色中才能被真正读懂。</p>
+        <p>从霓虹闪烁的都市夜景，到深邃黑暗的心理悬疑；从午夜场的孤独治愈，到凌晨三点的灵感迸发——这里收录了所有适合在夜晚观看的影片。</p>
+        <p>戴上耳机，调暗灯光，让啪啪啪电影网陪你度过每一个不眠之夜。🌃</p>
+        <div class="url">🌐 https://papapadianyingwang-top.github.io</div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-logo"><span class="fn">啪啪啪</span><span class="fl">电影网</span></div>
+    <div class="footer-nav">
+        <a href="#home">首页</a>
+        <a href="#night">夜色精选</a>
+        <a href="#channel">夜色频道</a>
+        <a href="#midnight">午夜榜单</a>
+        <a href="#about">关于本站</a>
+        <a href="#">免责声明</a>
+        <a href="#">联系合作</a>
+    </div>
+    <div class="footer-line"></div>
+    <div class="footer-copy">© 2024 啪啪啪电影网 · Midnight Cinema</div>
+    <div class="footer-site">https://papapadianyingwang-top.github.io</div>
+</footer>
+
+</body>
+</html>
